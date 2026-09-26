@@ -59,6 +59,46 @@ def detect_indicators(text: str) -> list[dict]:
                 })
     annotations.sort(key=lambda a: a["start"])
     return annotations
+ARCHETYPES = [
+    {
+        "name": "Fake Job / Recruitment Scam",
+        "requires_any": ["payment_request"],
+        "requires_all_of_any_group": [["urgency", "verification_pressure", "reward"]],
+        "why": "Combines urgency or verification pressure with a request for payment or personal information."
+    },
+    {
+        "name": "Prize / Lottery Scam",
+        "requires_any": ["reward"],
+        "requires_all_of_any_group": [["urgency", "verification_pressure"]],
+        "why": "An unsolicited reward or prize paired with pressure to act or verify details."
+    },
+    {
+        "name": "Fake Bank / Account Alert",
+        "requires_any": ["verification_pressure"],
+        "requires_all_of_any_group": [["urgency", "authority_impersonation"]],
+        "why": "Impersonates a bank or authority and pressures you to verify account details."
+    },
+    {
+        "name": "Tech-Support / Payment Scam",
+        "requires_any": ["payment_request"],
+        "requires_all_of_any_group": [["urgency"]],
+        "why": "Urgent language combined with a request for payment."
+    },
+]
+
+def classify_archetype(annotations: list[dict]) -> dict | None:
+    found_types = {a["type"] for a in annotations}
+
+    for archetype in ARCHETYPES:
+        has_required = any(t in found_types for t in archetype["requires_any"])
+        has_group = all(
+            any(t in found_types for t in group)
+            for group in archetype["requires_all_of_any_group"]
+        )
+        if has_required and has_group:
+            return {"name": archetype["name"], "why": archetype["why"]}
+
+    return None
 
 if __name__ == "__main__":
     sample = "URGENT! Verify your account at http://paypa1-secure.com or call 555-123-4567. Contact us at support@totally-real-bank.com"
