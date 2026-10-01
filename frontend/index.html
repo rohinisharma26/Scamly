@@ -1,13 +1,324 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary min-h-screen"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;background-color:#05060a;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.02); }
+  }
+  @keyframes pulseSubtle {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.04); }
+  }
+  .animate-float-slow { animation: floatSlow 8s ease-in-out infinite; }
+  .animate-pulse-subtle { animation: pulseSubtle 4s ease-in-out infinite; }
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-on-surface":"#2f3036","on-error-container":"#ffdad6","surface-container-low":"#090b11","on-surface":"#e3e1e9","background":"#05060a","surface-container-highest":"#1b1e2a","on-secondary-container":"#dcb7ff","outline-variant":"#1e2333","surface":"#05060a","primary-fixed-dim":"#00dbe9","secondary":"#dcb8ff","inverse-surface":"#e3e1e9","on-primary-fixed":"#002022","surface-container-lowest":"#030407","on-tertiary-container":"#bb0058","on-background":"#e3e1e9","inverse-primary":"#006970","on-primary-fixed-variant":"#004f54","surface-tint":"#00dbe9","on-tertiary-fixed-variant":"#8f0041","primary":"#dbfcff","error-container":"#3d0b13","primary-fixed":"#7df4ff","on-error":"#ffb4ab","surface-variant":"#161924","tertiary-fixed":"#ffd9e0","primary-container":"#00f0ff","on-tertiary-fixed":"#3f0019","surface-container":"#0d1017","error":"#ff4f64","on-secondary-fixed":"#2c0051","surface-bright":"#262b3b","surface-dim":"#05060a","tertiary":"#fff3f4","on-secondary":"#480081","on-primary":"#00363a","surface-container-high":"#141722","on-surface-variant":"#9aa8b8","outline":"#404959","secondary-container":"#5b149b","tertiary-container":"#ffccd6","secondary-fixed":"#efdbff","on-secondary-fixed-variant":"#6700b5","secondary-fixed-dim":"#dcb8ff","on-primary-container":"#006970","on-tertiary":"#66002c","tertiary-fixed-dim":"#ffb1c3"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin-lg":"5.5rem","gutter":"1.5rem","space-xl":"2.5rem","space-sm":"0.5rem","margin-md":"3rem","space-lg":"1.5rem","space-xs":"0.25rem","margin":"1.5rem","gutter-lg":"2rem","space-md":"1rem"},fontFamily:{"headline-md":["Space Grotesk"],"body-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-xl-mobile":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"label-sm":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"label-md":["JetBrains Mono"],"headline-lg":["Space Grotesk"],"headline-xl":["Space Grotesk"],"headline-sm":["Space Grotesk"]},fontSize:{"headline-md":["28px",{"lineHeight":"36px","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-xl-mobile":["36px",{"lineHeight":"44px","fontWeight":"700"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","fontWeight":"500"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"headline-lg":["40px",{"lineHeight":"48px","fontWeight":"600"}],"headline-xl":["58px",{"lineHeight":"66px","fontWeight":"700"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}]}}}};</script><header class="fixed top-0 left-0 right-0 w-full z-50 bg-[#05060a]/85 backdrop-blur-xl border-b border-white/10"><div class="h-20 w-full max-w-[1280px] mx-auto px-margin md:px-gutter-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="font-headline-sm text-headline-sm text-primary tracking-tight hidden sm:inline-block">Scamly</span></div><nav class="hidden lg:flex items-center gap-space-lg"><a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors font-medium" data-path="features" href="#features">Features</a><a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors font-medium" data-path="archetypes" href="#archetypes">Archetypes</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex font-body-md text-body-md text-on-surface hover:text-primary transition-colors px-space-sm py-space-xs font-medium" data-path="sign-in" href="#">Sign in</a><a class="inline-flex items-center justify-center font-headline-sm text-body-sm px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all duration-200 shadow-[0_0_24px_rgba(0,240,255,0.4)] active:scale-95 font-semibold" data-path="try-it-free" href="#">Try Scamly</a><div class="w-8 h-8 rounded-full bg-white/10 border border-white/15 flex items-center justify-center ml-space-xs shrink-0"><span class="material-symbols-outlined text-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full overflow-hidden bg-[#05060a] px-margin md:px-gutter-lg pb-margin-lg pt-space-xl">
+<!-- Glowing Warm Ambient Blob (Amber #ffaa40 / Violet #8b5cf6 / Cyan in top-right backdrop) -->
+<div class="absolute -top-24 right-[-5%] sm:right-[5%] w-[480px] sm:w-[620px] h-[480px] sm:h-[620px] pointer-events-none rounded-full blur-[120px] sm:blur-[140px] opacity-45 mix-blend-screen" style="background: radial-gradient(circle at 60% 40%, rgb(255, 123, 37) 0%, rgb(245, 158, 11) 24%, rgb(168, 85, 247) 48%, rgb(0, 240, 255) 72%, transparent 88%);"></div><div class="absolute inset-0 w-full h-[680px] pointer-events-none z-0 overflow-hidden mix-blend-screen opacity-95"><svg class="w-full h-full" fill="none" preserveaspectratio="xMidYMin slice" viewbox="0 0 1440 760" xmlns="http://www.w3.org/2000/svg"><defs><filter height="200%" id="anamorphicFlareGlow" width="200%" x="-50%" y="-50%"><fegaussianblur in="SourceGraphic" result="blur1" stddeviation="3"></fegaussianblur><fegaussianblur in="SourceGraphic" result="blur2" stddeviation="12"></fegaussianblur><fegaussianblur in="SourceGraphic" result="blur3" stddeviation="36"></fegaussianblur><femerge><femergenode in="blur3"></femergenode><femergenode in="blur2"></femergenode><femergenode in="blur1"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter><filter height="300%" id="coreGlow" width="300%" x="-100%" y="-100%"><fegaussianblur in="SourceGraphic" result="softGlow" stddeviation="24"></fegaussianblur><femerge><femergenode in="softGlow"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter><radialgradient cx="50%" cy="50%" id="flareCenterGlow" r="50%"><stop offset="0%" stop-color="#ffffff" stop-opacity="1"></stop><stop offset="15%" stop-color="#ffe3ab" stop-opacity="0.9"></stop><stop offset="35%" stop-color="#ff6f3c" stop-opacity="0.6"></stop><stop offset="60%" stop-color="#8b5cf6" stop-opacity="0.25"></stop><stop offset="85%" stop-color="#00f0ff" stop-opacity="0.1"></stop><stop offset="100%" stop-color="#000000" stop-opacity="0"></stop></radialgradient><lineargradient id="beamWhiteCore" x1="100%" x2="20%" y1="15%" y2="100%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0"></stop><stop offset="20%" stop-color="#ffffff" stop-opacity="0.95"></stop><stop offset="48%" stop-color="#ffffff" stop-opacity="1"></stop><stop offset="75%" stop-color="#ffffff" stop-opacity="0.9"></stop><stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop></lineargradient><lineargradient id="beamAmberGold" x1="100%" x2="20%" y1="10%" y2="100%"><stop offset="0%" stop-color="#ff9436" stop-opacity="0"></stop><stop offset="25%" stop-color="#ffaa40" stop-opacity="0.9"></stop><stop offset="50%" stop-color="#ff5722" stop-opacity="0.85"></stop><stop offset="78%" stop-color="#e11d48" stop-opacity="0.7"></stop><stop offset="100%" stop-color="#7928ca" stop-opacity="0"></stop></lineargradient><lineargradient id="beamCyanViolet" x1="100%" x2="15%" y1="20%" y2="100%"><stop offset="0%" stop-color="#00f0ff" stop-opacity="0"></stop><stop offset="30%" stop-color="#38bdf8" stop-opacity="0.65"></stop><stop offset="52%" stop-color="#00f0ff" stop-opacity="0.85"></stop><stop offset="70%" stop-color="#a855f7" stop-opacity="0.8"></stop><stop offset="100%" stop-color="#05060a" stop-opacity="0"></stop></lineargradient><lineargradient id="hFlare" x1="0%" x2="100%" y1="50%" y2="50%"><stop offset="0%" stop-color="#00f0ff" stop-opacity="0"></stop><stop offset="25%" stop-color="#c084fc" stop-opacity="0.4"></stop><stop offset="46%" stop-color="#ffa149" stop-opacity="0.95"></stop><stop offset="50%" stop-color="#ffffff" stop-opacity="1"></stop><stop offset="54%" stop-color="#ffa149" stop-opacity="0.95"></stop><stop offset="75%" stop-color="#00f0ff" stop-opacity="0.4"></stop><stop offset="100%" stop-color="#00f0ff" stop-opacity="0"></stop></lineargradient><lineargradient id="vFlare" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0"></stop><stop offset="35%" stop-color="#ffedd5" stop-opacity="0.7"></stop><stop offset="50%" stop-color="#ffffff" stop-opacity="1"></stop><stop offset="65%" stop-color="#ffedd5" stop-opacity="0.7"></stop><stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop></lineargradient></defs><g opacity="0.6"><path d="M 1480 30 Q 980 260 380 740" filter="url(#coreGlow)" opacity="0.35" stroke="#a855f7" stroke-linecap="round" stroke-width="46"></path><path d="M 1460 20 Q 960 260 360 740" filter="url(#coreGlow)" opacity="0.45" stroke="#ff4500" stroke-linecap="round" stroke-width="36"></path><path d="M 1440 25 Q 940 270 340 750" filter="url(#coreGlow)" opacity="0.4" stroke="#00f0ff" stroke-linecap="round" stroke-width="28"></path></g><g filter="url(#anamorphicFlareGlow)"><path d="M 1450 35 Q 970 265 370 735" opacity="0.8" stroke="url(#beamCyanViolet)" stroke-linecap="round" stroke-width="16"></path><path d="M 1440 25 Q 960 260 360 730" opacity="0.95" stroke="url(#beamAmberGold)" stroke-linecap="round" stroke-width="12"></path><path d="M 1435 28 Q 955 258 355 725" opacity="0.9" stroke="#f59e0b" stroke-linecap="round" stroke-width="7"></path><path d="M 1430 25 Q 950 255 350 720" opacity="1" stroke="url(#beamWhiteCore)" stroke-linecap="round" stroke-width="4"></path><path d="M 1425 22 Q 945 252 345 715" opacity="1" stroke="#ffffff" stroke-linecap="round" stroke-width="1.8"></path><path d="M 1460 50 Q 990 280 400 750" opacity="0.6" stroke="#38bdf8" stroke-linecap="round" stroke-width="3"></path><path d="M 1410 10 Q 930 240 320 700" opacity="0.75" stroke="#fb923c" stroke-linecap="round" stroke-width="3"></path></g><g transform="translate(950, 255)"><circle cx="0" cy="0" fill="url(#flareCenterGlow)" opacity="0.95" r="160"></circle><circle cx="0" cy="0" fill="url(#flareCenterGlow)" opacity="0.8" r="80"></circle><ellipse cx="0" cy="0" fill="url(#hFlare)" filter="url(#anamorphicFlareGlow)" opacity="0.9" rx="540" ry="4.5"></ellipse><ellipse cx="0" cy="0" fill="url(#hFlare)" filter="url(#anamorphicFlareGlow)" opacity="1" rx="220" ry="2.5"></ellipse><ellipse cx="0" cy="0" fill="url(#vFlare)" filter="url(#anamorphicFlareGlow)" opacity="0.75" rx="2.5" ry="260"></ellipse><line filter="url(#anamorphicFlareGlow)" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.5" x1="-200" x2="200" y1="-150" y2="150"></line><line filter="url(#anamorphicFlareGlow)" stroke="#ffedd5" stroke-opacity="0.6" stroke-width="1.2" x1="-150" x2="150" y1="200" y2="-200"></line><circle cx="0" cy="0" fill="#ffffff" filter="url(#anamorphicFlareGlow)" r="12"></circle><circle cx="0" cy="0" fill="#ffffff" r="5"></circle><ellipse cx="180" cy="-50" fill="#00f0ff" filter="url(#coreGlow)" opacity="0.18" rx="35" ry="18"></ellipse><ellipse cx="-220" cy="60" fill="#ff5722" filter="url(#coreGlow)" opacity="0.2" rx="50" ry="25"></ellipse></g></svg></div>
+<div class="absolute top-1/3 -left-32 w-[500px] h-[500px] pointer-events-none rounded-full blur-[140px] opacity-25" style="background: radial-gradient(circle, #7701d0 0%, #00f0ff 60%, transparent 80%);"></div>
+<!-- Animated Constellation Canvas Background -->
+<canvas class="absolute inset-0 w-full h-full pointer-events-none z-0" height="1045" id="heroConstellationCanvas" width="1280"></canvas>
+<div class="relative max-w-[1280px] mx-auto flex flex-col items-center text-center z-10">
+<!-- Eyebrow Badge: Pattern-based scam detection -->
+<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-[#0d1017]/80 backdrop-blur-md border border-cyan-500/25 shadow-[0_0_20px_rgba(0,240,255,0.15)] mb-space-lg"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-80"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-widest">Pattern-based scam detection</span></div>
+<!-- Creative Two-Line Headline -->
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight max-w-4xl mx-auto mb-space-md">
+      Deception has a spectrum. <br class="hidden sm:inline"/>
+<span class="bg-gradient-to-r from-primary-fixed via-primary-container to-[#dcb8ff] text-transparent bg-clip-text">We illuminate the invisible.</span>
+</h1>
+<!-- Persuasive Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface max-w-2xl mx-auto mb-space-xl opacity-95">Unmask manipulative subtext, coercive urgency, and weaponized psychology in incoming messages before you ever tap reply.</p>
+<!-- INTEGRATED HERO SCANNER & PLAYGROUND -->
+<div class="w-full max-w-4xl bg-[#090b11]/90 backdrop-blur-2xl rounded-2xl p-space-md sm:p-space-lg border border-white/10 shadow-[0_0_50px_rgba(0,240,255,0.08)] relative text-left">
+<!-- Glow rim header line -->
+<div class="absolute -top-[1px] left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent"></div>
+<!-- Interactive Input Area -->
+<div class="space-y-space-sm mb-space-md"><div class="flex items-center justify-between"><label class="font-label-sm text-label-sm text-cyan-300 uppercase tracking-wider font-semibold flex items-center gap-1.5" for="messageInput"><span class="material-symbols-outlined text-primary-container text-[16px]">edit_note</span>Paste a suspicious message here</label></div><div class="relative bg-[#05060a] border border-cyan-500/30 rounded-xl p-space-sm transition-all focus-within:border-cyan-500/50 focus-within:shadow-[0_0_20px_rgba(0,240,255,0.15)]"><textarea class="w-full bg-transparent font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none resize-none min-h-[92px] p-space-xs leading-relaxed" id="messageInput" placeholder="Paste a suspicious message here...">URGENT: Your Wire Transfer #8942-US has been placed on hold. Verify identity immediately via secure-chase-auth.net/review or funds will forfeit.</textarea><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-xs border-t border-white/10 mt-space-xs"><div class="flex items-center gap-space-xs text-on-surface font-label-sm text-label-sm"><span class="material-symbols-outlined text-[15px] text-primary">security</span><span class="font-medium">Private and ephemeral</span></div><div class="flex items-center gap-space-xs self-end sm:self-auto"><button class="font-label-sm text-label-sm text-on-surface hover:text-white px-space-sm py-1 transition-colors font-medium border border-white/10 rounded" id="clearInput">Clear</button><button class="inline-flex items-center justify-center gap-space-xs font-headline-sm text-body-sm px-space-lg py-2 rounded-lg bg-gradient-to-r from-cyan-400 to-cyan-300 text-on-primary hover:brightness-110 transition-all duration-200 shadow-[0_0_24px_rgba(0,240,255,0.35)] active:scale-95 font-bold" id="analyzeTrigger"><span class="material-symbols-outlined text-[18px]">lens_blur</span><span>Analyze</span></button></div></div></div><div class="flex flex-wrap items-center gap-space-xs pt-1"><span class="font-label-sm text-label-sm text-on-surface font-medium mr-1">Quick test prompts:</span><button class="sample-chip font-label-sm text-label-sm px-space-sm py-1 rounded-md bg-[#141722] border border-cyan-500/30 text-on-surface hover:text-primary hover:border-cyan-500/50 transition-all flex items-center gap-1 font-medium" data-text="URGENT: Your Wire Transfer #8942-US has been placed on hold. Verify identity immediately via secure-chase-auth.net/review or funds will forfeit." data-type="wire"><span>⚡ Urgent Bank Alert</span></button><button class="sample-chip font-label-sm text-label-sm px-space-sm py-1 rounded-md bg-[#141722] border border-purple-500/30 text-on-surface hover:text-primary hover:border-purple-500/50 transition-all flex items-center gap-1 font-medium" data-text="Hey, are you at your desk? Need you to pick up 6 Apple Gift Cards for executive client incentives ASAP. Do not call, in meeting." data-type="gift"><span>🎁 Executive Request</span></button><button class="sample-chip font-label-sm text-label-sm px-space-sm py-1 rounded-md bg-[#141722] border border-amber-500/30 text-on-surface hover:text-primary hover:border-amber-500/50 transition-all flex items-center gap-1 font-medium" data-text="USPS Parcel #US992011 is pending custom duty settlement ($2.40). Pay within 2h to avoid delivery termination: bit.ly/usps-settle-p2" data-type="parcel"><span>📦 Delivery Notification</span></button></div></div>
+<!-- RESULTS AREA DIRECTLY INSIDE HERO CARD -->
+<div class="border-t border-white/10 pt-space-md" id="resultsArea">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left: Highlighted Suspicious Phrases & Detected Indicator Tags -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-space-sm">
+<div class="p-space-md rounded-xl bg-[#05060a] border border-white/10 font-body-md text-on-surface leading-relaxed text-sm sm:text-base relative" id="highlightedPayloadContainer">
+<span class="bg-rose-500/20 text-rose-300 border border-rose-500/40 px-1.5 py-0.5 rounded font-mono text-xs inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>URGENT:
+              </span>
+              Your Wire Transfer #8942-US has been 
+              <span class="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-1.5 py-0.5 rounded font-mono text-xs">placed on hold</span>. 
+              Verify identity immediately via 
+              <span class="bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 underline decoration-cyan-400 px-1.5 py-0.5 rounded font-mono text-xs">secure-chase-auth.net/review</span> 
+              or 
+              <span class="bg-rose-500/20 text-rose-300 border border-rose-500/40 px-1.5 py-0.5 rounded font-mono text-xs inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>funds will forfeit
+              </span>.
+            </div>
+<!-- Detected Indicator Tags (No percentages) -->
+<div class="flex flex-wrap items-center gap-2 pt-1" id="indicatorTags"><span class="px-2.5 py-1 rounded-md text-xs font-label-sm bg-rose-500/15 border border-rose-500/30 text-rose-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Artificial urgency</span><span class="px-2.5 py-1 rounded-md text-xs font-label-sm bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Unverified domain</span><span class="px-2.5 py-1 rounded-md text-xs font-label-sm bg-amber-500/15 border border-amber-500/30 text-amber-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Threat of forfeiture</span></div>
+</div>
+<!-- Right: Likely Pattern Card (Honest, clean, no numbers or rings) -->
+<div class="lg:col-span-5 bg-[#05060a] border border-white/10 rounded-xl p-space-md flex flex-col justify-between relative overflow-hidden" id="likelyScamCard"><div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div><div><div class="flex items-center justify-between pb-2 mb-2 border-b border-white/10"><span class="font-label-sm text-xs text-on-surface font-semibold tracking-wider">LIKELY PATTERN</span><span class="font-label-sm text-xs text-rose-300 bg-rose-500/20 border border-rose-500/40 px-2 py-0.5 rounded font-bold uppercase" id="riskBadge">Suspicious Pattern</span></div><div class="my-space-xs"><h4 class="font-headline-sm text-lg sm:text-xl text-white font-bold tracking-tight" id="archetypeTitle">Urgent Wire Transfer Impersonation</h4><p class="font-body-md text-xs sm:text-sm text-on-surface/90 mt-2 leading-relaxed" id="archetypeReason">Pressures you to act quickly by threatening financial forfeiture and redirects to an unofficial login portal.</p></div></div><div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-label-sm"><span class="text-on-surface font-medium">Recommended Action:</span><span class="text-primary font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-cyan-400">block</span>Do not click link or reply</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURES SECTION -->
+<section class="w-full bg-[#05060a] py-margin-lg px-margin md:px-gutter-lg relative border-t border-white/5" id="features">
+<div class="max-w-[1280px] mx-auto"><div class="max-w-2xl mb-margin-md"><div class="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-cyan-300 font-bold uppercase tracking-widest mb-space-xs"><span>// HOW SCAMLY WORKS</span></div><h2 class="font-headline-lg text-headline-lg text-white tracking-tight mb-space-sm">Engineered to see what human intuition misses.</h2><p class="font-body-md text-body-md text-on-surface font-normal">Traditional filters rely on outdated blacklists. Scamly illuminates deceptive context, urgency traps, and manipulative intent.</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg"><div class="group relative bg-[#090b11] hover:bg-[#0d1017] p-space-lg rounded-2xl border border-white/10 hover:border-cyan-500/40 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.4)] flex flex-col justify-between"><div><div class="w-12 h-12 rounded-xl bg-[#141722] border border-white/10 flex items-center justify-center text-cyan-400 mb-space-md group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(0,240,255,0.15)]"><span class="material-symbols-outlined text-[24px]">highlight</span></div><h3 class="font-headline-sm text-headline-sm text-white mb-space-xs">Inline Highlighting</h3><p class="font-body-md text-body-md text-on-surface">Spot the specific words, urgent demands, and manipulative phrases that make a message suspicious before taking action.</p></div></div><div class="group relative bg-[#090b11] hover:bg-[#0d1017] p-space-lg rounded-2xl border border-white/10 hover:border-purple-500/40 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.4)] flex flex-col justify-between" id="archetypes"><div><div class="w-12 h-12 rounded-xl bg-[#141722] border border-white/10 flex items-center justify-center text-purple-300 mb-space-md group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(168,85,247,0.15)]"><span class="material-symbols-outlined text-[24px]">fingerprint</span></div><h3 class="font-headline-sm text-headline-sm text-white mb-space-xs">Scam Archetype ID</h3><p class="font-body-md text-body-md text-on-surface">Understand the blueprint behind the message—whether it's bank impersonation, fake package tracking, or gift card coercion.</p></div></div><div class="group relative bg-[#090b11] hover:bg-[#0d1017] p-space-lg rounded-2xl border border-white/10 hover:border-amber-500/40 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.4)] flex flex-col justify-between"><div><div class="flex items-center justify-between mb-space-md"><div class="w-12 h-12 rounded-xl bg-[#141722] border border-white/10 flex items-center justify-center text-amber-300 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,170,64,0.15)]"><span class="material-symbols-outlined text-[24px]">account_tree</span></div><span class="font-label-sm text-xs px-2.5 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 font-bold shadow-[0_0_10px_rgba(255,170,64,0.15)]">Coming soon</span></div><h3 class="font-headline-sm text-headline-sm text-white mb-space-xs">What Happens Next</h3><p class="font-body-md text-body-md text-on-surface">Learn the intended sequence of events if you respond, so you can recognize the trap before stepping in.</p></div></div></div></div>
+</section>
+<!-- BOTTOM CALL TO ACTION BANNER -->
+<section class="relative w-full bg-[#05060a] py-margin-lg px-margin md:px-gutter-lg overflow-hidden border-t border-white/5">
+<div class="absolute -top-32 left-1/3 w-[500px] h-[400px] rounded-full blur-[140px] opacity-20 pointer-events-none" style="background: radial-gradient(circle, #ffaa40 0%, #a855f7 50%, #00f0ff 80%, transparent 90%);"></div>
+<div class="relative max-w-[1280px] mx-auto bg-[#090b11]/90 backdrop-blur-2xl p-space-xl md:p-margin-md rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(0,240,255,0.06)] flex flex-col lg:flex-row lg:items-center justify-between gap-space-xl">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-cyan-400 uppercase tracking-widest mb-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+<span>Clear Pattern Insights</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-white tracking-tight mb-space-sm">
+        Stop second-guessing suspicious messages.
+      </h2>
+<p class="font-body-lg text-body-lg text-on-surface">Analyze suspicious texts, emails, and payment requests immediately with clear explanations of manipulative tactics.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md shrink-0">
+<a class="inline-flex items-center justify-center font-headline-sm text-body-sm px-space-xl py-space-md rounded-lg bg-gradient-to-r from-cyan-400 to-cyan-300 text-on-primary hover:brightness-110 transition-all duration-200 shadow-[0_0_30px_rgba(0,240,255,0.35)] active:scale-95 font-semibold text-center" href="#">
+        Try Scamly
+      </a>
+<a class="inline-flex items-center justify-center font-headline-sm text-body-sm px-space-xl py-space-md rounded-lg bg-[#141722] border border-white/10 text-on-surface hover:text-white hover:border-white/20 transition-all duration-200 text-center" href="#features">
+        Learn More
+      </a>
+</div>
+</div>
+</section>
+</div>
+<!-- SCRIPTS: Interactive Hero Scanner & Constellation Particles -->
+<script>
+  // 1. Moving Constellation Particle Background (Canvas)
+  const canvas = document.getElementById('heroConstellationCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = canvas.parentElement.offsetWidth;
+    let height = canvas.height = canvas.parentElement.offsetHeight;
+
+    window.addEventListener('resize', () => {
+      if (canvas && canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      }
+    });
+
+    const numParticles = 46;
+    const particles = [];
+    const colors = ['#00f0ff', '#ffaa40', '#dcb8ff', '#ffd9e0', '#38bdf8'];
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 1.8 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.6 + 0.25,
+        pulseSpeed: Math.random() * 0.02 + 0.01
+      });
+    }
+
+    function animateConstellation() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw faint connection lines between nearby particles
+      for (let i = 0; i < numParticles; i++) {
+        for (let j = i + 1; j < numParticles; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 140) {
+            const lineAlpha = (1 - dist / 140) * 0.22;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 240, 255, ${lineAlpha})`;
+            ctx.lineWidth = 0.75;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw drifting particles
+      for (let i = 0; i < numParticles; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.006;
+        const currentAlpha = Math.max(0.15, Math.min(0.85, p.alpha));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = currentAlpha;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+      }
+
+      requestAnimationFrame(animateConstellation);
+    }
+    requestAnimationFrame(animateConstellation);
+  }
+  // 2. Real analyzer wired to the FastAPI backend
+  const API_URL = 'http://127.0.0.1:8000/api/analyze/message';
+
+  const messageInput = document.getElementById('messageInput');
+  const clearInput = document.getElementById('clearInput');
+  const analyzeBtn = document.getElementById('analyzeTrigger');
+  const analyzeLabel = analyzeBtn.querySelector('span:last-child');
+  const sampleChips = document.querySelectorAll('.sample-chip');
+
+  const highlightedPayload = document.getElementById('highlightedPayloadContainer');
+  const indicatorTags = document.getElementById('indicatorTags');
+  const archetypeTitle = document.getElementById('archetypeTitle');
+  const archetypeReason = document.getElementById('archetypeReason');
+  const riskBadge = document.getElementById('riskBadge');
+
+  // Sample messages written to trigger Scamly's real rules
+  const SAMPLES = {
+    wire: "URGENT: Your account has been placed on hold. Verify your account immediately or funds will be forfeited.",
+    gift: "Hey, are you at your desk? I need you to send a gift card for a client right away. Act now, I'm in a meeting.",
+    parcel: "Your parcel is on hold. Act now and pay a fee to release your delivery, or it expires today."
+  };
+
+  const STYLES = {
+    high:   { span: 'bg-rose-500/20 text-rose-300 border border-rose-500/40',    tag: 'bg-rose-500/15 border-rose-500/30 text-rose-300',    dot: 'bg-rose-400' },
+    medium: { span: 'bg-amber-500/20 text-amber-300 border border-amber-500/40', tag: 'bg-amber-500/15 border-amber-500/30 text-amber-300', dot: 'bg-amber-400' },
+    low:    { span: 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40',    tag: 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300',    dot: 'bg-cyan-400' }
+  };
+
+  const TYPE_LABELS = {
+    urgency: 'Artificial urgency',
+    verification_pressure: 'Pressure to verify details',
+    reward: 'Unsolicited reward',
+    payment_request: 'Payment request',
+    authority_impersonation: 'Authority impersonation'
+  };
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function buildHighlightedHtml(text, annotations) {
+    const sorted = [...annotations].sort((a, b) => a.start - b.start);
+    let html = '';
+    let cursor = 0;
+    for (const ann of sorted) {
+      if (ann.start < cursor) continue; // skip overlapping matches
+      html += escapeHtml(text.slice(cursor, ann.start));
+      const st = STYLES[ann.severity] || STYLES.medium;
+      html += `<span class="${st.span} px-1.5 py-0.5 rounded font-mono text-xs cursor-help" title="${escapeHtml(ann.explanation)}">${escapeHtml(text.slice(ann.start, ann.end))}</span>`;
+      cursor = ann.end;
+    }
+    html += escapeHtml(text.slice(cursor));
+    return html;
+  }
+
+  function setBadge(label, classes) {
+    riskBadge.textContent = label;
+    riskBadge.className = `font-label-sm text-xs border px-2 py-0.5 rounded font-bold uppercase ${classes}`;
+  }
+
+  function renderResult(data) {
+    highlightedPayload.innerHTML = buildHighlightedHtml(data.text, data.annotations);
+
+    // One tag per distinct indicator type
+    const seen = new Set();
+    let tagsHtml = '';
+    for (const a of data.annotations) {
+      if (seen.has(a.type)) continue;
+      seen.add(a.type);
+      const st = STYLES[a.severity] || STYLES.medium;
+      tagsHtml += `<span class="px-2.5 py-1 rounded-md text-xs font-label-sm border ${st.tag} flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full ${st.dot}"></span>${escapeHtml(TYPE_LABELS[a.type] || a.type)}</span>`;
+    }
+    indicatorTags.innerHTML = tagsHtml ||
+      '<span class="px-2.5 py-1 rounded-md text-xs font-label-sm border bg-white/5 border-white/10 text-on-surface">No known warning signs matched</span>';
+
+    if (data.archetype) {
+      archetypeTitle.textContent = data.archetype.name;
+      archetypeReason.textContent = data.archetype.why;
+    } else if (data.annotations.length) {
+      archetypeTitle.textContent = 'Warning signs found';
+      archetypeReason.textContent = 'Some suspicious phrases were detected, but not enough to match a known scam pattern.';
+    } else {
+      archetypeTitle.textContent = 'No known pattern found';
+      archetypeReason.textContent = "None of Scamly's current rules matched. That doesn't mean the message is safe, so stay cautious with unexpected requests.";
+    }
+
+    const hasHigh = data.annotations.some(a => a.severity === 'high');
+    if (hasHigh) setBadge('High-risk signals', 'text-rose-300 bg-rose-500/20 border-rose-500/40');
+    else if (data.annotations.length) setBadge('Some warning signs', 'text-amber-300 bg-amber-500/20 border-amber-500/40');
+    else setBadge('Nothing matched', 'text-cyan-300 bg-cyan-500/20 border-cyan-500/40');
+  }
+
+  function showError() {
+    highlightedPayload.textContent = 'Could not reach the analyzer. Is the backend running?';
+    indicatorTags.innerHTML = '';
+    archetypeTitle.textContent = 'Analyzer unavailable';
+    archetypeReason.textContent = 'Start the backend (uvicorn main:app --reload) and try again.';
+    setBadge('Offline', 'text-rose-300 bg-rose-500/20 border-rose-500/40');
+  }
+
+async function analyze() {
+  const text = messageInput.value.trim();
+  if (!text) return;
+  analyzeBtn.disabled = true;
+  analyzeLabel.textContent = 'Analyzing…';
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text }),
+      signal: controller.signal
+    });
+    if (!res.ok) throw new Error('Server responded with ' + res.status);
+    renderResult(await res.json());
+  } catch (err) {
+    console.error('Analyze failed:', err);
+    showError();
+  } finally {
+    clearTimeout(timer);
+    analyzeBtn.disabled = false;
+    analyzeLabel.textContent = 'Analyze';
+  }
+}
+
+  analyzeBtn.addEventListener('click', analyze);
+
+  sampleChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      messageInput.value = SAMPLES[chip.getAttribute('data-type')] || '';
+      analyze();
+    });
+  });
+
+  clearInput.addEventListener('click', () => {
+    messageInput.value = '';
+    messageInput.focus();
+  });
+
+  // Run once on load so the card shows a real result instead of placeholder content
+  messageInput.value = SAMPLES.wire;
+  analyze();
+ 
+</script></main><footer class="w-full bg-[#030407] border-t border-white/10 py-margin-md"><div class="w-full max-w-[1280px] mx-auto px-margin md:px-gutter-lg flex flex-col md:flex-row items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-on-surface font-medium">© 2025 Scamly Inc. All rights reserved.</span></div><nav class="flex flex-wrap items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface hover:text-primary transition-colors font-medium" data-path="privacy-policy" href="#">Privacy</a><a class="font-body-sm text-body-sm text-on-surface hover:text-primary transition-colors font-medium" data-path="terms-of-service" href="#">Terms</a><a class="font-body-sm text-body-sm text-on-surface hover:text-primary transition-colors font-medium" data-path="telemetry-status" href="#">Status</a></nav></div></footer>
+</body></html>
