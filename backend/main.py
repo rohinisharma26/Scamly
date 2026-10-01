@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from analyzer import (
     extract_urls, extract_emails, extract_phone_numbers,
-    detect_indicators, classify_archetype,
+    find_indicators, resolve_overlaps, classify_archetype,
 )
 
 app = FastAPI()
@@ -29,12 +29,12 @@ def health():
 @app.post("/api/analyze/message")
 def analyze_message(input: MessageInput):
     text = input.text
-    annotations = detect_indicators(text)
+    found = find_indicators(text)
     return {
         "text": text,
         "urls": extract_urls(text),
         "emails": extract_emails(text),
         "phones": extract_phone_numbers(text),
-        "annotations": annotations,
-        "archetype": classify_archetype(annotations),
+        "annotations": resolve_overlaps(found),
+        "archetype": classify_archetype(found),
     }
