@@ -195,7 +195,13 @@
     bar.classList.add('flex');
   };
   if (window.scamlyLastResult) window.onScamlyResult(window.scamlyLastResult);
-
+  // Called by the main page script when the user presses Clear
+  window.onScamlyClear = function () {
+    lastResult = null;
+    saveStatus.textContent = '';
+    bar.classList.add('hidden');
+    bar.classList.remove('flex');
+  };
   // ---------- Auth state ----------
   refreshUi();
   if (sb) {

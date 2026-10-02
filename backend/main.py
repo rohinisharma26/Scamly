@@ -2,9 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from analyzer import (
-    extract_urls, extract_emails, extract_phone_numbers,
+    extract_emails, extract_phone_numbers,
     find_indicators, resolve_overlaps, classify_archetype,
 )
+from links import extract_links, analyze_links
 
 app = FastAPI()
 
@@ -32,9 +33,10 @@ def analyze_message(input: MessageInput):
     found = find_indicators(text)
     return {
         "text": text,
-        "urls": extract_urls(text),
+        "urls": extract_links(text),
         "emails": extract_emails(text),
         "phones": extract_phone_numbers(text),
+        "links": analyze_links(text),
         "annotations": resolve_overlaps(found),
         "archetype": classify_archetype(found),
     }

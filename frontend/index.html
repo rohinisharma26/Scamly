@@ -240,7 +240,44 @@
     riskBadge.textContent = label;
     riskBadge.className = `font-label-sm text-xs border px-2 py-0.5 rounded font-bold uppercase ${classes}`;
   }
+  function renderLinks(data) {
+    let box = document.getElementById('linkChecks');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'linkChecks';
+      indicatorTags.insertAdjacentElement('afterend', box);
+    }
+    const links = data.links || [];
+    if (!links.length) { box.innerHTML = ''; return; }
 
+    const LEVEL_TEXT = { high: 'Strong warning signs', medium: 'Some warning signs', low: 'Minor warning signs', none: 'Nothing unusual spotted' };
+
+    box.innerHTML =
+      '<p class="font-label-sm text-label-sm text-cyan-300 uppercase tracking-wider font-semibold mt-3 mb-2">// Links in this message</p>' +
+      links.map((l) => {
+        const st = STYLES[l.level];
+        const badgeClass = st ? st.tag : 'bg-white/5 border-white/10 text-on-surface';
+        const flagsHtml = l.flags.length
+          ? '<ul class="mt-2 space-y-1 list-disc list-inside">' + l.flags.map((f) =>
+              '<li class="text-xs text-on-surface-variant"><span class="font-semibold text-on-surface">' + escapeHtml(f.label) + ':</span> ' + escapeHtml(f.explanation) + '</li>'
+            ).join('') + '</ul>'
+          : '<p class="mt-2 text-xs text-on-surface-variant">Nothing unusual in the address itself. That does not prove the link is safe.</p>';
+        return '<div class="bg-[#05060a] border border-white/10 rounded-xl p-3 mb-2">' +
+          '<div class="flex flex-wrap items-center justify-between gap-2">' +
+          '<span class="font-mono text-xs text-white break-all">' + escapeHtml(l.url) + '</span>' +
+          '<span class="px-2 py-0.5 rounded-md text-[11px] font-label-sm border ' + badgeClass + '">' + LEVEL_TEXT[l.level] + '</span>' +
+          '</div>' + flagsHtml + '</div>';
+      }).join('');
+
+    // A risky link counts even when no scam wording matched
+    if (!data.archetype && links.some((l) => l.level === 'high')) {
+      archetypeTitle.textContent = 'Suspicious link found';
+      archetypeReason.textContent = 'The wording did not match a known scam pattern, but a link in this message looks risky.';
+      setBadge('Some warning signs', 'text-amber-300 bg-amber-500/20 border-amber-500/40');
+      const action = document.getElementById('recommendedAction');
+      if (action) action.textContent = "Don't open the link.";
+    }
+  }
     function renderResult(data) {
     // One tag and one explanation line per distinct indicator type
     const seen = new Set();
@@ -285,7 +322,19 @@ if (action) {
   else action.textContent = 'Still verify unexpected requests.';
 }
   }
-
+  function resetResults() {
+    highlightedPayload.textContent = 'Results will appear here.';
+    indicatorTags.innerHTML = '';
+    const lb = document.getElementById('linkChecks');
+    if (lb) lb.innerHTML = '';
+    archetypeTitle.textContent = 'Waiting for a message';
+    archetypeReason.textContent = 'Paste a message above and press Analyze to see what stands out.';
+    setBadge('Waiting', 'text-on-surface bg-white/5 border-white/10');
+    const action = document.getElementById('recommendedAction');
+    if (action) action.textContent = 'Paste a message to begin.';
+    window.scamlyLastResult = null;
+    if (window.onScamlyClear) window.onScamlyClear();
+  }
   function showError() {
     highlightedPayload.textContent = 'Could not reach the analyzer. Is the backend running?';
     indicatorTags.innerHTML = '';
@@ -311,6 +360,7 @@ async function analyze() {
     if (!res.ok) throw new Error('Server responded with ' + res.status);
        const data = await res.json();
    renderResult(data);
+   renderLinks(data);
    window.scamlyLastResult = data;
    if (window.onScamlyResult) window.onScamlyResult(data);
   } catch (err) {
@@ -332,8 +382,9 @@ async function analyze() {
     });
   });
 
-  clearInput.addEventListener('click', () => {
+   clearInput.addEventListener('click', () => {
     messageInput.value = '';
+    resetResults();
     messageInput.focus();
   });
 
