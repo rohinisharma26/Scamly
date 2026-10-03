@@ -177,7 +177,10 @@
     requestAnimationFrame(animateConstellation);
   }
   // 2. Real analyzer wired to the FastAPI backend
-  const API_URL = 'http://127.0.0.1:8000/api/analyze/message';
+  const API_BASE = ['localhost', '127.0.0.1'].includes(location.hostname)
+  ? 'http://127.0.0.1:8000'
+  : 'https://YOUR-BACKEND.onrender.com';
+const API_URL = API_BASE + '/api/analyze/message';
 
   const messageInput = document.getElementById('messageInput');
   const clearInput = document.getElementById('clearInput');

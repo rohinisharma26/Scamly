@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -11,8 +13,13 @@ from playbooks import get_playbook
 
 app = FastAPI()
 
+# Local development is always allowed. For the live site, set FRONTEND_ORIGINS on the
+# server to your page's address, e.g. https://scamly.netlify.app (comma-separated if several).
+live_origins = [o.strip().rstrip("/") for o in os.getenv("FRONTEND_ORIGINS", "").split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=live_origins,
     allow_origin_regex=r"http://(localhost|127\.0\.0\.1):\d+",
     allow_methods=["*"],
     allow_headers=["*"],
