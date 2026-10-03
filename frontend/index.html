@@ -240,7 +240,7 @@
     riskBadge.textContent = label;
     riskBadge.className = `font-label-sm text-xs border px-2 py-0.5 rounded font-bold uppercase ${classes}`;
   }
-  function renderLinks(data) {
+    function renderLinks(data) {
     let box = document.getElementById('linkChecks');
     if (!box) {
       box = document.createElement('div');
@@ -251,6 +251,8 @@
     if (!links.length) { box.innerHTML = ''; return; }
 
     const LEVEL_TEXT = { high: 'Strong warning signs', medium: 'Some warning signs', low: 'Minor warning signs', none: 'Nothing unusual spotted' };
+    const VT_URL = API_URL.replace('/api/analyze/message', '/api/check-link');
+    const VT_COLORS = { high: 'text-rose-300', medium: 'text-amber-300', none: 'text-on-surface-variant' };
 
     box.innerHTML =
       '<p class="font-label-sm text-label-sm text-cyan-300 uppercase tracking-wider font-semibold mt-3 mb-2">// Links in this message</p>' +
@@ -262,12 +264,40 @@
               '<li class="text-xs text-on-surface-variant"><span class="font-semibold text-on-surface">' + escapeHtml(f.label) + ':</span> ' + escapeHtml(f.explanation) + '</li>'
             ).join('') + '</ul>'
           : '<p class="mt-2 text-xs text-on-surface-variant">Nothing unusual in the address itself. That does not prove the link is safe.</p>';
+        const vtHtml =
+          '<div class="mt-3 flex flex-wrap items-center gap-2">' +
+          '<button data-vt="' + escapeHtml(l.url) + '" title="Only the link is sent to VirusTotal, never your message" class="text-xs px-3 py-1 rounded-md bg-[#141722] border border-cyan-500/30 text-on-surface hover:text-white hover:border-cyan-500/50 transition-all disabled:opacity-50">Check with VirusTotal</button>' +
+          '<span data-vt-out class="text-xs text-on-surface-variant"></span></div>';
         return '<div class="bg-[#05060a] border border-white/10 rounded-xl p-3 mb-2">' +
           '<div class="flex flex-wrap items-center justify-between gap-2">' +
           '<span class="font-mono text-xs text-white break-all">' + escapeHtml(l.url) + '</span>' +
           '<span class="px-2 py-0.5 rounded-md text-[11px] font-label-sm border ' + badgeClass + '">' + LEVEL_TEXT[l.level] + '</span>' +
-          '</div>' + flagsHtml + '</div>';
+          '</div>' + flagsHtml + vtHtml + '</div>';
       }).join('');
+
+    // Optional lookup: only runs when the user presses the button
+    box.querySelectorAll('[data-vt]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const out = btn.parentElement.querySelector('[data-vt-out]');
+        btn.disabled = true;
+        out.className = 'text-xs text-on-surface-variant';
+        out.textContent = 'Checking…';
+        try {
+          const res = await fetch(VT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: btn.dataset.vt })
+          });
+          const r = await res.json();
+          out.className = 'text-xs ' + (VT_COLORS[r.level] || 'text-on-surface-variant');
+          out.textContent = r.summary || 'No answer from the checker.';
+        } catch (err) {
+          out.className = 'text-xs text-rose-300';
+          out.textContent = 'Could not reach the checker.';
+        }
+        btn.disabled = false;
+      });
+    });
 
     // A risky link counts even when no scam wording matched
     if (!data.archetype && links.some((l) => l.level === 'high')) {

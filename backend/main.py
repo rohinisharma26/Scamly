@@ -6,6 +6,7 @@ from analyzer import (
     find_indicators, resolve_overlaps, classify_archetype,
 )
 from links import extract_links, analyze_links
+from virustotal import check_url
 
 app = FastAPI()
 
@@ -18,6 +19,9 @@ app.add_middleware(
 
 class MessageInput(BaseModel):
     text: str = Field(min_length=1, max_length=5000)
+
+class LinkInput(BaseModel):
+    url: str = Field(min_length=3, max_length=2000)
 
 @app.get("/")
 def read_root():
@@ -40,3 +44,7 @@ def analyze_message(input: MessageInput):
         "annotations": resolve_overlaps(found),
         "archetype": classify_archetype(found),
     }
+
+@app.post("/api/check-link")
+def check_link(input: LinkInput):
+    return check_url(input.url)
