@@ -7,6 +7,7 @@ from analyzer import (
 )
 from links import extract_links, analyze_links
 from virustotal import check_url
+from playbooks import get_playbook
 
 app = FastAPI()
 
@@ -35,6 +36,7 @@ def health():
 def analyze_message(input: MessageInput):
     text = input.text
     found = find_indicators(text)
+    archetype = classify_archetype(found)
     return {
         "text": text,
         "urls": extract_links(text),
@@ -42,7 +44,8 @@ def analyze_message(input: MessageInput):
         "phones": extract_phone_numbers(text),
         "links": analyze_links(text),
         "annotations": resolve_overlaps(found),
-        "archetype": classify_archetype(found),
+        "archetype": archetype,
+        "playbook": get_playbook(archetype["name"]) if archetype else None,
     }
 
 @app.post("/api/check-link")
